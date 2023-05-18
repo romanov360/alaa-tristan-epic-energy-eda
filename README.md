@@ -8,7 +8,13 @@ Text test
 
 ## Introduction
 
-In this project, we studied the effectiveness of spice challenges in building team morale.
+In this project, we studied the power outages dataset. Each row of the dataset is a U.S. power outage, each column describes something about that outage. The dataset includes geographical (where did the outages occur) and temporal (when did the outages occur + how long did they last) data, and we connected the two in our analysis.
+
+The dataset has 1534 rows and 55 columns.
+
+We were interested in the 'YEAR','MONTH','CLIMATE.REGION','OUTAGE.DURATION','OUTAGE.START.TIME','OUTAGE.START.DATE','CAUSE.CATEGORY', and 'CAUSE.CATEGORY.DETAIL' columns. Their descriptions follow.
+
+
 
 ---
 
