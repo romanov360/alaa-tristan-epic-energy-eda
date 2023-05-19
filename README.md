@@ -102,6 +102,38 @@ Let's look at the region outage bar plot again. It gives the proportion of outag
 
 <iframe src="assets/region_bar.html" width=800 height=600 frameBorder=0></iframe>
 
-<iframe src="assets/test-file.html" width=800 height=600 frameBorder=0></iframe>
+Is this difference significant or can it be due to chance? We propose a hypothesis test for this claim.
+
+Let  {𝑝𝑖:𝑖∈𝑅𝑒𝑔𝑖𝑜𝑛𝑠} denote the set of proportion of power outages that occur in each region. That is, 𝑝_𝑟 for any region 𝑟 was observed to be equal to the height of its bar. The following table shows the values of 𝑝_𝑖 for all 𝑖.
+
+| Climate region (i)   |   Proportion (p_i) |
+|:---------------------|-------------------:|
+| Central              |          0.130378  |
+| East North Central   |          0.0899609 |
+| Northeast            |          0.228162  |
+| Northwest            |          0.0860495 |
+| South                |          0.149283  |
+| Southeast            |          0.0997392 |
+| Southwest            |          0.0599739 |
+| West                 |          0.14146   |
+| West North Central   |          0.0110821 |
+
+If all regions experience power outages at the same rate then we would expect to see the proportions close to  1/#𝑟𝑒𝑔𝑖𝑜𝑛𝑠=1/9.
+
+So we test
+
+𝐻_0:𝑝_𝑖=1/9 for all 𝑖
+ 
+vs
+
+𝐻_1: not all of the 𝑝_𝑖 are  19.
+
+We can let  𝛼=0.001.
+
+There were 1534 reported outages. We can simulate a sample from the null distribution by randomly assigning 1534 samples to nine categories uniformly. We can estimate the 𝑝_𝑖 to be the proportion of outages that land in each region 𝑖. The null distribution says that the proportions are all 1/9, and we can compare these samples from the null distribution to the null distribution by the TVD statistic. We can compute the TVD of the observed region proportions to the null distribution of proportions to get an idea of how extreme our observed proportions were if they truly came from the null distribution.
+
+<iframe src="assets/hypothesis_test.html" width=800 height=600 frameBorder=0></iframe>
+
+The proportion of TVDS computed between the null distribution and its samples to the right (as TVD is unidirectional; bigger is more extreme) of the observed TVD is 0: none of the 100000 sample TVDs came close to the TVD that we saw. Thus since  0<𝛼=0.001 we reject the null hypothesis that all regions get outages with the same rate, and we have evidence that some regions are more prone to power outages than others.
 
 ---
