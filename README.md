@@ -22,6 +22,7 @@ We were interested in the 'YEAR','MONTH','CLIMATE.REGION','OUTAGE.DURATION','OUT
 | CAUSE.CATEGORY.DETAIL               | What specifically caused the outage           |
 
 
+Our question is: how do power outages depend on their location?
 
 ---
 
