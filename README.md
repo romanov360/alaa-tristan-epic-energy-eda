@@ -84,19 +84,23 @@ We remember from some data science class that log-transforming zero-clustered da
 
 <iframe src="assets/outage_log_durations.html" width=800 height=600 frameBorder=0></iframe>
 
+For our bivariate analysis we investigate the association between different regions and how long their avergage outages were. In the plot we see that the East North Central region has the longest outages and that the West North Central region has the shortest outages of all nine regions.
+
+<iframe src="assets/mean_outage_duration_by_region.html" width=800 height=600 frameBorder=0></iframe>
+
 ---
 
 ## Assessment of Missingness
 
-Here's what a Markdown table looks like. Note that the code for this table was generated _automatically_ from a DataFrame, using
-
-```py
-print(counts[['Quarter', 'Count']].head().to_markdown(index=False))
-```
+We looked at all of the columns to find a column that is NMAR. We found the column 'CAUSE.CATEGORY.DETAIL' to be likely NMAR. We see that 30.7% of the values are missing. Though the CAUSE.CATEGORY is not missing at all. Though the preceding column, a column highly related in name and meaning, a column which is the categorization of the cause without the detail, is not missing at all. We postulate that it takes some effort to source the detailed cause of an outage, in a way that depends on the true details of the cause, thus cause.category.detail is NMAR. We cannot confirm this because we do not have the missing values, but we think that there are missing values for causes that are hard to explain. Not all power outage cause details are equally documentable/explainable, and we think that the harder to document/explain causes are filled in with NAN instead of properly described.
 
 ---
 
 ## Hypothesis Testing
+
+Let's look at the region outage bar plot again. It gives the proportion of outages observed in each region. It sure looks like different regions have different rates of power outages.
+
+<iframe src="assets/region_bar.html" width=800 height=600 frameBorder=0></iframe>
 
 <iframe src="assets/test-file.html" width=800 height=600 frameBorder=0></iframe>
 
