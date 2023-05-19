@@ -72,7 +72,17 @@ With just the eight columns we earlier identified as interesting, this is what t
 
 We use these columns in our univariate and bivariate analysis.
 
+We look at the distribution of how long the outages in our dataset lasted. People like Vilfredo Pareto have hypothesized power-law distributions for naturally occuring phenomena; we see a similar-looking distribution here.
 
+<iframe src="assets/outage_durations.html" width=800 height=600 frameBorder=0></iframe>
+
+We notice that a large portion of the outages are very short, so we look at the distribution of the time durations of the subset of outages that lasted less than fifteen minutes. This plot shows that most of the short power outages are zero or one minute in length.
+
+<iframe src="assets/short_outage_durations.html" width=800 height=600 frameBorder=0></iframe>
+
+We remember from some data science class that log-transforming zero-clustered data can make it easier to detect patterns because it brings together signals across different scales. We log-transform the first plot and see that log-durations follow a distribution characterizable by a point mass at zero (from all of the short outages) and a bimodal bell, which is interesting to see because it suggests that there are two factors that contribute to the length of longer power outages.
+
+<iframe src="assets/outage_log_durations.html" width=800 height=600 frameBorder=0></iframe>
 
 ---
 
