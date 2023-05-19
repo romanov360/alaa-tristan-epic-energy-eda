@@ -14,11 +14,34 @@ The dataset has 1534 rows and 55 columns.
 
 We were interested in the 'YEAR','MONTH','CLIMATE.REGION','OUTAGE.DURATION','OUTAGE.START.TIME','OUTAGE.START.DATE','CAUSE.CATEGORY', and 'CAUSE.CATEGORY.DETAIL' columns. Their descriptions follow.
 
+| Column that we were interested in   | Description                                   |
+|:------------------------------------|:----------------------------------------------|
+| YEAR                                | The year of the outage                        |
+| MONTH                               | The month of the outage                       |
+| CLIMATE.REGION                      | What region of the U.S. the outage occured in |
+| OUTAGE.DURATION                     | How long the outage lasted                    |
+| OUTAGE.START.TIME                   | What time the outage started                  |
+| OUTAGE.START.DATE                   | What date the outage started                  |
+| CAUSE.CATEGORY                      | What caused the outage                        |
+| CAUSE.CATEGORY.DETAIL               | What specifically caused the outage           |
+
 
 
 ---
 
 ## Cleaning and EDA
+
+The data were provided in an untidy Excel format which we manually chopped. Some of the datatypes were interpreted as floats by the Pandas reading but we discovered by a visual traversal that some of these columns float-valued had to be ints, like the 'CUSTOMERS.AFFECTED' column for example. For other columns like 'DEMAND.LOSS.MW' which measures the megawatts of electricity lost in the outage it was unclear whether they should have been floats or ints. We applied a programmatic approach to discovering whether columns containing numeric values (either already as floats or as strings) should be of type int or float. The following is an example of how we did this, with the 'TOTAL.SALES' column.
+
+```py
+np.all(
+    df['TOTAL.SALES'].astype(float).apply(
+        lambda num: num.is_integer() or np.isnan(num)
+    )
+)
+```
+
+This returns True, which shows us that 'TOTAL.SALES' should be an int.
 
 <iframe src="assets/test-file.html" width=800 height=600 frameBorder=0></iframe>
 
