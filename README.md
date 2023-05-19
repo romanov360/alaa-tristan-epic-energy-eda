@@ -1,4 +1,4 @@
-# Tristan and Alaa's Epic Energy EDA
+# Alaa and Tristan's Epic Energy EDA
 
 ---
 
