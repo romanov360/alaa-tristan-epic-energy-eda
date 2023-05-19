@@ -84,11 +84,34 @@ For our bivariate analysis we investigate the association between different regi
 
 <iframe src="assets/mean_outage_duration_by_region.html" width=800 height=600 frameBorder=0></iframe>
 
+For our interesting aggregate we looked at the proportion of power outages that occured in every month. We noticed that they are unusually uniform. We suspected that there would be more in the summer or more in the winter, when air conditioning and heating units are running, but we do not see this in the aggregation.
+
+|   MONTH | Percent of power outages in this month   |
+|--------:|:-----------------------------------------|
+|       1 | 8.87%                                    |
+|       2 | 8.87%                                    |
+|       3 | 6.52%                                    |
+|       4 | 7.24%                                    |
+|       5 | 8.28%                                    |
+|       6 | 12.71%                                   |
+|       7 | 11.8%                                    |
+|       8 | 9.97%                                    |
+|       9 | 6.13%                                    |
+|      10 | 7.11%                                    |
+|      11 | 4.69%                                    |
+|      12 | 7.24%                                    |
+
 ---
 
 ## Assessment of Missingness
 
 We looked at all of the columns to find a column that is NMAR. We found the column 'CAUSE.CATEGORY.DETAIL' to be likely NMAR. We see that 30.7% of the values are missing. Though the CAUSE.CATEGORY is not missing at all. Though the preceding column, a column highly related in name and meaning, a column which is the categorization of the cause without the detail, is not missing at all. We postulate that it takes some effort to source the detailed cause of an outage, in a way that depends on the true details of the cause, thus cause.category.detail is NMAR. We cannot confirm this because we do not have the missing values, but we think that there are missing values for causes that are hard to explain. Not all power outage cause details are equally documentable/explainable, and we think that the harder to document/explain causes are filled in with NAN instead of properly described.
+
+We saw that the CLIMATE.REGION column had some missing values. We suspected that this missingness may depend on some other columns. We performed missingness permutation tests with CLIMATE.REGION and STATE, a column where no values were missing. We shuffled the values in the STATE column and computed the TVD to assess missingness. With the null hypothesis that the missingness of CLIMATE.REGION does not depend on STATE and the alternative hypothesis that it does, we generated the following sampling distribution of the test statistic by simulation under the null hypothesis.
+
+<iframe src="assets/missingness_test.html" width=800 height=600 frameBorder=0></iframe>
+
+Our observed TVD was more extreme than all of the sampled data, giving a p-value of 0. So we reject the null hypothesis. That is, we have evidence that CLIMATE.REGION is not MCAR but MAR, dependent on STATE.
 
 ---
 
